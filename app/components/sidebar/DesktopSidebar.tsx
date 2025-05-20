@@ -11,8 +11,6 @@ interface DesktopSidebarProps {
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
     currentUser
 }) => {
-    console.log(currentUser);
-
     const routes = useRoutes();
     const [isOpen, setIsOpen] = useState(false);
     return (
@@ -31,7 +29,8 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
         lg:pb-4
         lg:flex
         lg:flex-col
-        justify-between"
+        justify-between
+        border-r-gray-200"
         >
             <nav
                 className="
@@ -60,8 +59,8 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
             <nav className="mt-4 flex flex-col justify-between items-center">
                 <div onClick={() => setIsOpen(true)}
                     className="cursor-pointer hover:opacity-75 transition">
-                        <Avatar user={currentUser}></Avatar>
-                    </div>
+                    <Avatar user={currentUser}></Avatar>
+                </div>
             </nav>
         </div>
     )

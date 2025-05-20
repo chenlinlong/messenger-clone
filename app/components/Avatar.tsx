@@ -12,7 +12,7 @@ const Avatar: React.FC<{
                     className="relative inline-block rounded-full overflow-hidden h-9 w-9 md:h-11
                     md:w-11"
                 >
-                    <Image alt="Avatar" src={user?.image || '/images/placeholder.jpg'} fill />
+                    <Image alt="Avatar" src={user?.image || '/images/placeholder.jpg'} fill sizes="18" />
                 </div>
                 <span
                     className="
@@ -27,7 +27,7 @@ const Avatar: React.FC<{
                     h-2
                     w-2
                     md:h-2
-                    md:w-3
+                    md:w-2
                     "
                 ></span>
             </div>

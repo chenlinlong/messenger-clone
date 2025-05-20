@@ -4,17 +4,19 @@ import getConversations from "../actions/getConversations";
 import ConversationList from "./components/ConversationList";
 
 
-const ConversationLayout: React.FC<{
+const ConversationLayout = async ({
+    children
+}: {
     children: React.ReactNode
-}> = async () => {
+}) => {
     const conversations = await getConversations();
     console.log(conversations, 'conversations');
-    
 
     return (
         <Sidebar>
             <div className="h-full">
                 <ConversationList initialItems={conversations}></ConversationList>
+                {children}
             </div>
         </Sidebar>
     )
