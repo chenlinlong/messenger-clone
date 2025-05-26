@@ -6,6 +6,7 @@ import axios from "axios";
 
 import useConversation from "@/app/hooks/useConversation";
 import MessageInput from "./MessageInput";
+import { CldUploadButton } from "next-cloudinary";
 
 const Form = () => {
   const { conversationId } = useConversation();
@@ -30,9 +31,21 @@ const Form = () => {
     });
   };
 
+  const handleUpload = (result: any) => {
+    axios.post('/api/messages', {
+      image: result?.info?.secure_url,
+      conversationId
+    })
+  }
+
   return (
     <div className="py-4 px-4 bg-white flex items-center gap-2 lg:gap-4 w-full border-t-gray-200 border-t">
-      <HiPhoto size={30} className="text-sky-500" />
+      <CldUploadButton
+        options={{ maxFiles: 1 }}
+        onSuccess={handleUpload}
+        uploadPreset="iasfegdv">
+        <HiPhoto size={30} className="text-sky-500" />
+      </CldUploadButton>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex items-center gap-2 lg:gap-4 w-full"
