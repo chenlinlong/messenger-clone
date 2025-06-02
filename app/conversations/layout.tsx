@@ -2,6 +2,7 @@ import React from "react"
 import Sidebar from "../components/sidebar/Sidebar";
 import getConversations from "../actions/getConversations";
 import ConversationList from "./components/ConversationList";
+import getUser from "../actions/getUsers";
 
 
 const ConversationLayout = async ({
@@ -10,12 +11,13 @@ const ConversationLayout = async ({
     children: React.ReactNode
 }) => {
     const conversations = await getConversations();
+    const users = await getUser();
     console.log(conversations, 'conversations');
 
     return (
         <Sidebar>
             <div className="h-full">
-                <ConversationList initialItems={conversations}></ConversationList>
+                <ConversationList users={users} initialItems={conversations}></ConversationList>
                 {children}
             </div>
         </Sidebar>
