@@ -12,14 +12,9 @@ export async function DELETE(
     try {
         const currentUser = await getCurrentUser();
         const { conversationId } = await params;
-        console.log(conversationId, 'conversationId111');
-
-
         if (!currentUser?.id || !currentUser?.email) {
             return new NextResponse("Unauthorized", { status: 401 });
         }
-        console.log(currentUser, 'conversationId2222');
-
 
         const existingConversation = await prisma.conversation.findUnique({
             where: {
@@ -29,8 +24,6 @@ export async function DELETE(
                 users: true,
             },
         });
-        console.log(existingConversation, 'conversationId3333');
-
         if (!existingConversation) {
             return new NextResponse("Invalid ID", { status: 400 });
         }
@@ -45,8 +38,6 @@ export async function DELETE(
                 },
             },
         });
-        console.log(deletedConversation, 'conversationId34444444');
-
 
         return NextResponse.json(deletedConversation);
     } catch (error: any) {

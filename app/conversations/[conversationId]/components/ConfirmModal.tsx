@@ -23,7 +23,6 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
 
     const onDelete = useCallback(() => {
         setIsLoading(true);
-        console.log(conversationId, 'confirm modal');
         
         axios.delete(`/api/conversations/${conversationId}`)
             .then(() => {

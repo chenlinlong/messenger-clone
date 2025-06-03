@@ -12,7 +12,6 @@ const ConversationLayout = async ({
 }) => {
     const conversations = await getConversations();
     const users = await getUser();
-    console.log(conversations, 'conversations');
 
     return (
         <Sidebar>

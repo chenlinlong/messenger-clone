@@ -1,6 +1,7 @@
 'use client';
 
 import Avatar from "@/app/components/Avatar";
+import AvatarGroup from "@/app/components/AvatarGroup";
 import { User } from "@/app/generated/prisma";
 import useOtherUser from "@/app/hooks/useOtherUser";
 import clsx from "clsx";
@@ -15,7 +16,7 @@ interface ConversationBoxProps {
   selected: boolean;
 }
 
-const ConversationBox: React.FC<ConversationBoxProps> = ({ data, selected }) => {
+const ConversationBox: React.FC<ConversationBoxProps> = ({ data = {}, selected }) => {
   const otherUser = useOtherUser(data);
   const session = useSession();
   const router = useRouter();
@@ -58,7 +59,11 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({ data, selected }) => 
         selected ? "bg-neutral-100" : "bg-white"
       )}
     >
-      <Avatar user={otherUser} />
+      {data.isGroup ? (
+        <AvatarGroup users={data.users} />
+      ) : (
+        <Avatar user={otherUser} />
+      )}
       <div className="min-w-0 flex-1">
         <div className="flex justify-between items-center mb-1">
           <p className="text-md font-medium text-gray-900">
