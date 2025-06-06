@@ -3,11 +3,13 @@
 import useConversation from "@/app/hooks/useConversation";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { MdOutlineGroupAdd } from "react-icons/md";
 import ConversationBox from "./ConversationBox";
 import { User } from "@/app/generated/prisma";
 import GroupChatModal from "./GroupChatModal";
+import { useSession } from "next-auth/react";
+import { pusherClient } from "@/app/libs/pusher";
 
 interface ConversationListProps {
     initialItems: any;
@@ -23,6 +25,26 @@ const ConversationList: React.FC<ConversationListProps> = ({
 
     const router = useRouter();
     const { conversationId, isOpen } = useConversation();
+
+    const session = useSession();
+
+    const pusherKey = useMemo(() => {
+        return session?.data?.user?.email;
+    }, [session?.data?.user?.email]);
+
+    useEffect(() => {
+        if (!pusherKey) {
+            return;
+        }
+
+        pusherClient.subscribe(pusherKey);
+
+        const newHandler = () => {
+
+        }
+
+        pusherClient.bind('conversation:new', newHandler)
+    });
 
     return (
         <>
