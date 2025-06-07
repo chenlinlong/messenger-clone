@@ -2,7 +2,7 @@
 
 A full-stack real-time messaging application built with modern technologies.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend**: React, Next.js 13 (App Router), TailwindCSS
 - **Backend**: Next.js API routes, Prisma ORM, MongoDB
@@ -10,18 +10,18 @@ A full-stack real-time messaging application built with modern technologies.
 - **Real-Time**: Pusher
 - **Storage**: Cloudinary (or similar, optional)
 
-## ✨ Features
+## Features
 
-- 🔐 User authentication with email & password
-- 📱 Responsive chat UI for mobile and desktop
-- 💬 One-on-one and group messaging
-- ✅ Message read/unread status
-- ✍️ Typing indicators
-- 📎 Image/file upload
-- 🔄 Real-time updates via WebSockets
-- 👥 User profile and settings
+-  User authentication with email & password
+-  Responsive chat UI for mobile and desktop
+-  One-on-one and group messaging
+-  Message read/unread status
+-  Typing indicators
+-  Image/file upload
+-  Real-time updates via WebSockets
+-  User profile and settings
 
-## 🚀 How to Run Locally
+##  How to Run Locally
 
 1. Clone this repo
 2. Install dependencies: `npm install`
@@ -29,6 +29,6 @@ A full-stack real-time messaging application built with modern technologies.
 4. Run dev server: `npm run dev`
 
 
-## 📣 Author
+##  Author
 
 Built by [Your Name]([https://www.upwork.com/freelancers/~yourprofileid](https://www.upwork.com/freelancers/~01e2fc1e355ceef362))
