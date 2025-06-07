@@ -31,4 +31,4 @@ A full-stack real-time messaging application built with modern technologies.
 
 ##  Author
 
-Built by Linlong Chen([https://www.upwork.com/freelancers/~yourprofileid](https://www.upwork.com/freelancers/~01e2fc1e355ceef362))
+Built by Linlong Chen(https://www.upwork.com/freelancers/~01e2fc1e355ceef362)
