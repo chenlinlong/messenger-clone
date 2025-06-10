@@ -64,7 +64,6 @@ export async function POST(request: Request) {
                 }
             }
         });
-
         await pusher.trigger(conversationId, 'message:new', newMessage);
 
         const lastMessage = updatedConversation?.messages && updatedConversation.messages[updatedConversation.messages.length - 1]

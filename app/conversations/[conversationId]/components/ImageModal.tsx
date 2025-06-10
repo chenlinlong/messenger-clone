@@ -25,6 +25,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
                     className="object-cover"
                     fill
                     src={src}
+                    sizes="40px"
                 />
             </div>
         </Modal>

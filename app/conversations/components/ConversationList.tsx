@@ -2,7 +2,6 @@
 
 import useConversation from "@/app/hooks/useConversation";
 import clsx from "clsx";
-import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { MdOutlineGroupAdd } from "react-icons/md";
 import ConversationBox from "./ConversationBox";
@@ -10,6 +9,7 @@ import { User } from "@/app/generated/prisma";
 import GroupChatModal from "./GroupChatModal";
 import { useSession } from "next-auth/react";
 import { pusherClient } from "@/app/libs/pusher";
+import { find } from "lodash";
 
 interface ConversationListProps {
     initialItems: any;
@@ -23,7 +23,6 @@ const ConversationList: React.FC<ConversationListProps> = ({
     const [items, setItems] = useState(initialItems);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const router = useRouter();
     const { conversationId, isOpen } = useConversation();
 
     const session = useSession();
@@ -37,14 +36,33 @@ const ConversationList: React.FC<ConversationListProps> = ({
             return;
         }
 
-        pusherClient.subscribe(pusherKey);
+        const channel = pusherClient.subscribe(pusherKey);
 
-        const newHandler = () => {
-
+        const newHandler = (newConversation: any) => {
+            setItems((current: any) => {
+                if (!find(current, { id: newConversation?.id })) {
+                    return [newConversation, ...current]
+                }
+                return current;
+            });
         }
+        const updateHandler = (updatedConversation: any) => {
+            setItems((current: any) => {
+                console.log(current, 'curernt list-------------');
+                console.log(updatedConversation, 'updatedConversation-------------');
+                return current;
+            });
+        }
+        
+        channel.bind('conversation:new', newHandler);
+        channel.bind('conversation:update', updateHandler);
 
-        pusherClient.bind('conversation:new', newHandler)
-    });
+        return () => {
+            pusherClient.unsubscribe(pusherKey);
+            channel.unbind('conversation:new', newHandler);
+            channel.unbind('conversation:update', updateHandler);
+        }
+    }, [pusherKey]);
 
     return (
         <>
@@ -86,7 +104,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
                             <MdOutlineGroupAdd size={20} />
                         </div>
                     </div>
-                    {items.map((item: User) => (
+                    {items?.map((item: User) => (
                         <ConversationBox
                             key={item.id}
                             data={item}

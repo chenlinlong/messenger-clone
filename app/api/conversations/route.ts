@@ -92,6 +92,12 @@ export async function POST(request: Request) {
           users: true,
         }
       });
+
+      newConversation.users?.map((user) => {
+        if (user.email) {
+          pusher.trigger(user.email, 'conversation:new', newConversation);
+        }
+      });
   
       return NextResponse.json(newConversation);
   

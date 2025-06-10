@@ -20,10 +20,10 @@ const Body: React.FC<{
     }, [conversationId]);
 
     useEffect(() => {
-        pusherClient.subscribe(conversationId);
+        const channel = pusherClient.subscribe(conversationId);
         bottomRef?.current?.scrollIntoView();
 
-        const messageHandler = (message: any) => {
+        const messageHandler = (message: any) => {            
             axios.post(`/api/conversations/${conversationId}/seen`);
 
             setMessages((current: any) => {
@@ -33,28 +33,26 @@ const Body: React.FC<{
 
                 return [ ...current, message ]
             });
-            bottomRef?.current?.scrollIntoView();            
+            bottomRef?.current?.scrollIntoView();
         }
 
         const updateMessageHandler = (newMessage: any) => {
-            console.log(newMessage, 'updateMessageHandler-------')
-
             setMessages((current: any) => current.map((currentMessage: any) => {
                 if (currentMessage.id === newMessage.id) {
                     return newMessage;
                 }
 
                 return currentMessage;
-            }))
+            }));
         }
 
-        pusherClient.bind('message:new', messageHandler);
-        pusherClient.bind('message:update', updateMessageHandler);
+        channel.bind('message:new', messageHandler);
+        channel.bind('message:update', updateMessageHandler);
 
         return () => {
             pusherClient.unsubscribe(conversationId);
-            pusherClient.unbind('message:new', messageHandler);
-            pusherClient.unbind('message:update', updateMessageHandler);
+            channel.unbind('message:new', messageHandler);
+            channel.unbind('message:update', updateMessageHandler);
         }
     }, [conversationId])
     return (

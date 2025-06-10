@@ -36,7 +36,7 @@ export const authOptions: AuthOptions = {
 
                 // step: throw error if user doesn't exist or user has goole account but no password
                 if (!user || !user?.hashedPassword) {
-                    throw new Error('Invalid Credentials');
+                    throw new Error('No account info!');
                 }
 
                 const isCorrectPassword = await bcrypt.compare(
@@ -52,7 +52,7 @@ export const authOptions: AuthOptions = {
             }
         })
     ],
-    debug: process.env.NODE_ENV === 'development',
+    debug: false,
     session: {
         strategy: 'jwt'
     },

@@ -14,7 +14,7 @@ export default function Home() {
       bg-gray-100
       ">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                <Image alt="logo" width="80" height="80" className="mx-auto w-auto" src="/images/logo.png"
+                <Image alt="logo" width="80" height="80" className="mx-auto w-auto" src="/images/logo.png" priority
                 />
                 <h2 className="
                 mt-6
