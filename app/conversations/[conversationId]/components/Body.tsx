@@ -23,7 +23,7 @@ const Body: React.FC<{
         const channel = pusherClient.subscribe(conversationId);
         bottomRef?.current?.scrollIntoView();
 
-        const messageHandler = (message: any) => {            
+        const messageHandler = (message: any) => {
             axios.post(`/api/conversations/${conversationId}/seen`);
 
             setMessages((current: any) => {
@@ -31,7 +31,7 @@ const Body: React.FC<{
                     return current;
                 }
 
-                return [ ...current, message ]
+                return [...current, message]
             });
             bottomRef?.current?.scrollIntoView();
         }

@@ -47,11 +47,12 @@ const ConversationList: React.FC<ConversationListProps> = ({
             });
         }
         const updateHandler = (updatedConversation: any) => {
-            setItems((current: any) => {
-                console.log(current, 'curernt list-------------');
-                console.log(updatedConversation, 'updatedConversation-------------');
-                return current;
-            });
+            setItems((current: any) => current.map((conversation: any) => {
+                if (conversation.id === updatedConversation.id) {
+                    conversation.messages = updatedConversation.messages;
+                }
+                return conversation;
+            }));
         }
         
         channel.bind('conversation:new', newHandler);
