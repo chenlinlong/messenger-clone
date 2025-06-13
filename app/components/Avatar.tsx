@@ -1,11 +1,16 @@
 import { User } from "../generated/prisma";
 import Image from "next/image";
+import useActiveList from "../hooks/useAcitveList";
 
 const Avatar: React.FC<{
     user: User
 }> = ({
     user
 }) => {
+        const { members } = useActiveList();
+        console.log(members, 'AVATAR------------');
+        
+        const isActive = user?.email && (members.indexOf(user.email) !== -1);
         return (
             <div className="relative">
                 <div
@@ -14,8 +19,10 @@ const Avatar: React.FC<{
                 >
                     <Image alt="Avatar" src={user?.image || '/images/placeholder.jpg'} fill sizes="18" />
                 </div>
-                <span
-                    className="
+                {
+                    isActive &&
+                    (<span
+                        className="
                     absolute
                     block
                     rounded-full
@@ -29,7 +36,9 @@ const Avatar: React.FC<{
                     md:h-2
                     md:w-2
                     "
-                ></span>
+                    ></span>)
+                }
+
             </div>
         )
     }

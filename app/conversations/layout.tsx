@@ -11,7 +11,7 @@ const ConversationLayout = async ({
     children: React.ReactNode
 }) => {
     const conversations = await getConversations();
-    const users = await getUser();
+    const users = await getUser();    
 
     return (
         <Sidebar>
