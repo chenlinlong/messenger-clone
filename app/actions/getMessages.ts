@@ -18,7 +18,9 @@ const getMessages = async (
         });
 
         return messages;
-    } catch (error) {
+    } catch (error: any) {
+        console.error(error);
+
         return null;
     }
 }

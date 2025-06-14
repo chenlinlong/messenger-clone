@@ -28,7 +28,6 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
         watch,
         handleSubmit,
         setValue,
-        trigger,
         formState: {
             errors
         }

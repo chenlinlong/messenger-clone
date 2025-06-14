@@ -74,7 +74,7 @@ export async function POST(
 
     return NextResponse.json(updatedMessage);
   } catch (error: any) {
-    console.log("[CONVERSATION_SEEN_ERROR]", error);
+    console.error("[CONVERSATION_SEEN_ERROR]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

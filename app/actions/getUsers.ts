@@ -21,7 +21,8 @@ const getUser = async () => {
         });
 
         return users || [];
-    } catch (error) {
+    } catch (error: any) {
+        console.error(error);
         return [];
     }
 }

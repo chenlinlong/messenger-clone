@@ -38,8 +38,8 @@ export async function POST(
         });
     
         return NextResponse.json(user);
-    } catch (error) {
-        console.log(error, 'REGISTRATION_ERROR');
+    } catch (error: any) {
+        console.error(error, 'REGISTRATION_ERROR');
         return new NextResponse('Missing Info', { status: 500 });
     }
 }

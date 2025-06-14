@@ -1,5 +1,4 @@
 import Avatar from "@/app/components/Avatar";
-import AvatarGroup from "@/app/components/AvatarGroup";
 import clsx from "clsx";
 import { format } from "date-fns";
 import { useSession } from "next-auth/react";
@@ -13,17 +12,16 @@ interface MessageBoxProps {
 }
 
 const MessageBox: React.FC<MessageBoxProps> = ({
-    data,
-    isLast
+    data
 }) => {
     const session = useSession();
     const [imageModalOpen, setImageModalOpen] = useState(false);
 
     const isOwn = session?.data?.user?.email === data?.sender?.email;
-    const seenList = (data?.seen || [])
-        .filter((user: any) => user.email !== data?.sender?.email)
-        .map((user: any) => user.name)
-        .join(', ');
+    // const seenList = (data?.seen || [])
+    //     .filter((user: any) => user.email !== data?.sender?.email)
+    //     .map((user: any) => user.name)
+    //     .join(', ');
 
     const container = clsx(
         'flex gap-3 p-4',

@@ -1,6 +1,5 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/libs/authOptions";
 import { pusher } from "@/app/libs/pusher";
-import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 

@@ -1,6 +1,5 @@
 'use client';
 import Avatar from "@/app/components/Avatar"
-import { Conversation, User } from "@/app/generated/prisma"
 import useOtherUser from "@/app/hooks/useOtherUser"
 import Link from "next/link"
 import { useMemo, useState } from "react"
