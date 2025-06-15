@@ -1,5 +1,6 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import DesktopSidebar from "./DesktopSidebar";
+import ActiveStatus from "../ActiveStatus";
 
 interface SidebarProps {
     children: React.ReactNode;
@@ -11,6 +12,7 @@ export default async function Sidebar({
     const currentUser = await getCurrentUser();
     return (
         <div className="h-full">
+            <ActiveStatus></ActiveStatus>
             <DesktopSidebar currentUser={currentUser!}></DesktopSidebar>
             <main className="lg:pl-20 h-full">
                 {children}
