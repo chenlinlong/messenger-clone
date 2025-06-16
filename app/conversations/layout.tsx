@@ -15,7 +15,7 @@ const ConversationLayout = async ({
 
     return (
         <Sidebar>
-            <div className="h-full">
+            <div className="h-full bg-gray-100 lg:bg-white">
                 <ConversationList users={users} initialItems={conversations}></ConversationList>
                 {children}
             </div>

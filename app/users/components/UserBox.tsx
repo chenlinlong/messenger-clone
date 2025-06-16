@@ -55,6 +55,7 @@ const UserBox: React.FC<UserBoxProps> = ({
                         </div>
                     </div>
                 </div>
+                <div className="absolute bottom-0 w-[95%] h-[1px] bg-gray-100 block lg:hidden"></div>
             </div>
         </>
     )

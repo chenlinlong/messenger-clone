@@ -28,7 +28,9 @@ const DesktopItem = ({
                 className={clsx(`
                 group
                 flex
-                gap-x-3
+                mr-10
+                lg:mr-auto
+                lg:gap-x-3
                 rounded-md
                 p-3
                 text-sm

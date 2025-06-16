@@ -9,7 +9,7 @@ const Home: React.FC = () => {
     return (
         <div
             className={
-                clsx("lg:pl-80 h-full lg:block",
+                clsx("lg:pl-80 h-full hidden lg:block",
                     isOpen ? 'block' : 'hidden'
                 )
             }>
