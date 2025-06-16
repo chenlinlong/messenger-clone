@@ -26,7 +26,7 @@ export default async function ConversationPageId({ params }: { params: Promise<I
     }
 
     return (
-        <div className="lg:pl-80 h-full" >
+        <div className="lg:pl-80 h-full pb-20 lg:pb-0" >
             <div className="h-full flex flex-col">
                 <Header conversation={conversation}></Header>
                 <Body initialMessages={messages}></Body>
