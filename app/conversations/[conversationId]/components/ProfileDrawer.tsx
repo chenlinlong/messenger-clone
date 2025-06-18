@@ -93,7 +93,6 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                           <div className="mb-2">
                             {data.isGroup ? (
                               <AvatarGroup users={data.users} />
-
                             ) : (
                               <Avatar user={otherUser} />
                             )}
@@ -106,7 +105,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                           </div>
                           {
                             !data?.isGroup && (
-                              <div>
+                              <div className="text-sm text-gray-500 mt-2">
                                 {otherUser?.tagline}
                               </div>
                             )

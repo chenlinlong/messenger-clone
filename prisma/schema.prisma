@@ -20,7 +20,7 @@ model User {
   email          String?   @unique
   emailVerified  DateTime?
   image          String?
-  tagline        String?
+  tagline        String? @default("This person is lazy and left nothing behind.")
   hashedPassword String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
