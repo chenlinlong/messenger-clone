@@ -9,6 +9,7 @@ export async function POST(request: Request) {
     const {
       name,
       image,
+      tagline
     } = body;
 
     if (!currentUser?.id) {
@@ -22,6 +23,7 @@ export async function POST(request: Request) {
       data: {
         name,
         image,
+        tagline
       },
     });
 

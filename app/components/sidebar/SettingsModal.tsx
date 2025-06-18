@@ -34,7 +34,8 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
     } = useForm<FieldValues>({
         defaultValues: {
             name: currentUser?.name,
-            image: currentUser?.image
+            image: currentUser?.image,
+            tagline: currentUser?.tagline
         }
     });
 
@@ -79,7 +80,14 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                                 required
                                 register={register}
                             />
-
+                            <Input
+                                disabled={isLoading}
+                                label="Tagline"
+                                id="tagline"
+                                errors={errors}
+                                required
+                                register={register}
+                            />
                             <div className="mt-2 flex items-center gap-x-3">
                                 <Image
                                     width="48"
